@@ -1,6 +1,8 @@
 package ld.render;
 
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 
 import ld.util.Constants;
 import ld.util.Rectangle;
@@ -16,9 +18,13 @@ public class Render {
 	public void initalize() {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, Constants.WIDTH, Constants.HEIGHT, 0, 1, -1);
+		GL11.glOrtho(0, Constants.WIDTH, 0, Constants.HEIGHT, 1, -1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glEnable(GL11.GL_BLEND);
 	}
+
 	
 	public void drawRectangle(Rectangle rect, Color color) {
 		GL11.glColor3f(color.getRed(), color.getBlue(), color.getGreen());
