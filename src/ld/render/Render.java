@@ -1,8 +1,6 @@
 package ld.render;
 
 import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
 
 import ld.util.Constants;
 import ld.util.Rectangle;

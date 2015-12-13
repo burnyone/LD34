@@ -1,6 +1,6 @@
 package ld;
 
-import ld.game.UniverseSelectionMenu;
+import ld.game.GalaxySelectionMenu;
 import ld.render.Render;
 import ld.render.Texture;
 import ld.util.Constants;
@@ -13,13 +13,21 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class Game {
 	
+	private enum GameState {
+		IN_GALAXY_MENU,
+		IN_GALAXY,
+		PAUSED,
+	}
+	
 	@SuppressWarnings("unused")
 	private Render render;
-	private UniverseSelectionMenu uniMenu;
+	private GalaxySelectionMenu uniMenu;
+	
+	private GameState state = GameState.IN_GALAXY_MENU;
 	
 	public Game(){
 		render = new Render();
-		uniMenu = new UniverseSelectionMenu();
+		uniMenu = new GalaxySelectionMenu();
 	}
 	
 	public void begin() {
@@ -35,6 +43,7 @@ public class Game {
 		GL11.glClearColor(50 / 255, 60 / 255, 70 / 255, 1f);
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		uniMenu.draw();
+		new Texture("assets/star_main_sequence.png", new Vector2f(0, 0)).draw();
 	}
 	
 	public void terminate() {
